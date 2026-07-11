@@ -1,0 +1,8 @@
+*.o                 
+*.bin          
+ 
+docs/ 
+assembler
+
+!README.md       
+!Makefile         
