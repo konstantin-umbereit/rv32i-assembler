@@ -21,14 +21,21 @@ RV32I-Assembler (written in C)
 2. USAGE ASSEMBLER
 
     1. Change directory to /assembler
-    2. 
+    2. Compile with GCC
 ```bash 
-        make 
+    make 
 ```
     3. 
 ```bash 
-    ./assembler /path_to_source_file.s 
+    ./assembler [options] <file>
 ```
+
+Options:
+   -o <file>       Place the output into <file>.
+
+ Without any options the assembler creates 'output.bin'in the
+ directory where the assemblers executable is located.
+
 
 3. LICENCE
 

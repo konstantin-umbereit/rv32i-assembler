@@ -16,8 +16,10 @@
 
 static void print_usage(const char *progname)
 {
-    fprintf(stderr, "Usage: %s <source.s>\n", progname);
-    fprintf(stderr, "\nExample: ./assembler test.s\n");
+    fprintf(stderr, "Usage: %s [options] <file>\n", progname);
+    fprintf(stderr, "Options:\n");
+    fprintf(stderr, "   -o <file>       Place the output into <file>.\n\n");
+    fprintf(stderr, " Without any options the assembler creates 'output.bin'in the\n directory where the assemblers executable is located.\n");
     exit(2);   /* 2 = usage error */
 }
 
@@ -25,16 +27,37 @@ int main(int argc, char **argv)
 {
 
 
-    /* INPUT VALIDATION */
+    /* INPUT VALIDATION + FLAG PARSING*/
     
     const char *input_file  = NULL;     
     const char *output_file = "output.bin";  
-    if (argc < 2) {
+
+    for (int i = 1; i < argc; i++) {
+        if (strcmp(argv[i], "-o") == 0) {
+            if (i + 1 < argc) {
+                output_file = argv[i + 1];
+                i++;
+            }
+            else {
+                fprintf(stderr, "Error: -o requires a filename\n");
+                print_usage(argv[0]);
+            }
+        }
+        else if (input_file == NULL) {
+            input_file = argv[i];
+        }
+        else {
+            fprintf(stderr, "Error: too many arguments\n");
+            print_usage(argv[0]);
+        }
+    }
+
+
+    if (input_file == NULL) {
         fprintf(stderr, "Error: missing input assembly file\n");
         print_usage(argv[0]);  
-        
     }
-    input_file = argv[1];
+
     printf("Assembling '%s' → '%s'\n", input_file, output_file);
 
 

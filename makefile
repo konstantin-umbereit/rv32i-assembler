@@ -13,7 +13,7 @@ SRCS = src/main.c \
 assembler: $(SRCS)
 	$(CC) $(CFLAGS) $(SRCS) -o assembler
 	
-assembler_clean:
+clean:
 	rm -f assembler
 
 .PHONY: clean
