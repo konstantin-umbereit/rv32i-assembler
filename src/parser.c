@@ -1155,7 +1155,7 @@ static bool encode_b_instruction(Parser *parser, Statement *stmt)
         imm = (int32_t)(entry->address - stmt->location);
     } else {
         imm = instr->operands[2].value.imm_value;
-        if (imm % 0b100 != 0) { parser_error(parser, "immediate value for branch instruction must be  multiple of 4"); return false; }
+        if (imm % 4 != 0) { parser_error(parser, "immediate value for branch instruction must be  multiple of 4"); return false; }
     }   
     
 
