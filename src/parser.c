@@ -163,6 +163,7 @@ void parser_free(Parser *parser)
     for (size_t i = 0; i < parser->statement_count; i++) {
         Statement *stmt = &parser->statements[i];
         ParsedInstruction *instr = &stmt->payload.instruction;
+        ParsedDirective *d = &stmt->payload.directive;
 
         switch (stmt->type) {
             case ST_LABEL_DEFINITION:
@@ -194,7 +195,6 @@ void parser_free(Parser *parser)
             
 
             case ST_DIRECTIVE: 
-                ParsedDirective *d = &stmt->payload.directive;
                 switch (d->type) {
                     case DT_GLOBAL:
                         free((void*)d->payload.symbol_name);
