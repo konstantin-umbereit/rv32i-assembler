@@ -1,26 +1,26 @@
-RV32I-Assembler (written in C)
+# RV32I-Assembler (written in C)
 
 Writes the opcode as raw binary data into the output file.
 
-1. SUPPORTED INSTRUCTIONS
+## 1. Supported Instructions
 
  Base instructions: 
-    - add, sub, and, or, xor, sll, srl, sra, slt, sltu
-    - addi, andi, ori, xori, slli, srli, srai, slti, sltiu,
-      lb, lh, lw, lbu, lhu, jalr, ecall, ebreak
-    - sb, sh, sw,
-    - beq, bne, blt, bge, bltu, bgeu,
-    - jal
-    - lui, auipic
+- add, sub, and, or, xor, sll, srl, sra, slt, sltu
+- addi, andi, ori, xori, slli, srli, srai, slti, sltiu,
+- lb, lh, lw, lbu, lhu, jalr, ecall, ebreak
+- sb, sh, sw,
+- beq, bne, blt, bge, bltu, bgeu,
+- jal
+- lui, auipic
 
  Pseudo instructions:
-    - nop, mv, li, la, j, ret, call, tail
+ - nop, mv, li, la, j, ret, call, tail
 
  Directives:
-    - .text, .data, .globl / .global, .align, .word, .half, .byte,
+ - .text, .data, .globl / .global, .align, .word, .half, .byte,
       .ascii, .asciz
 
-2. USAGE ASSEMBLER
+## 2. Usage
 
    1. Change directory to /assembler
       
@@ -31,17 +31,17 @@ Writes the opcode as raw binary data into the output file.
    3. Execute:
   
 ```bash 
-    ./assembler [options] <file>
+    ./assembler [options] <source_file>
 ```
 
 Options:
-   -o <file>       Place the output into <file>.
+- -o &lt;output_file&gt; :      Place the output into  &lt;output_file&gt;.
 
- Without any options the assembler creates 'output.bin'in the
+ Without any options the assembler creates 'output.bin' in the
  directory where the assemblers executable is located.
 
 
-3. LICENCE
+## 3. License
 
     MIT License
 
