@@ -22,12 +22,14 @@ Writes the opcode as raw binary data into the output file.
 
 2. USAGE ASSEMBLER
 
-    1. Change directory to /assembler
-    2. Compile with GCC
+   1. Change directory to /assembler
+      
+   2. Compile with GCC:
 ```bash 
     make 
 ```
-    3. 
+   3. Execute:
+  
 ```bash 
     ./assembler [options] <file>
 ```
