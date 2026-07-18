@@ -1,6 +1,6 @@
 # RV32I-Assembler (written in C)
 
-Writes the opcode as raw binary data into the output file.
+Writes the opcode as raw binary data (.text section buffer first, then .data section buffer) into the output file.
 
 ## 1. Supported Instructions
 
