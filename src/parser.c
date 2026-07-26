@@ -1293,13 +1293,12 @@ static bool encode_pseudo_instruction(Parser *parser, Statement *stmt)
         }
         else { parser_error(parser, "pseudo 'li': operand[1] must be OK_IMMEDIATE or OK_LABEL_REFERENCE"); return false; }
         uint32_t hi, lo;
-        if (imm >=0) {                                  /* negative imm */
+        lo = (uint32_t)(imm & 0xFFF);
+        if (lo >> 11 == (uint32_t)1) {                         /* negative lo */
             hi = (uint32_t)(imm + (int32_t)0x800) >> 12;
-            lo = (uint32_t)(imm & 0xFFF);
         }
-        else {                                          /* positive imm*/
+        else {                                                 /* positive lo*/
             hi = (uint32_t)(((uint32_t)imm) >> 12);
-            lo = (uint32_t)(imm & 0xFFF);
         }
         uint32_t word1 = ENCODE_U(OPCODE_LUI, rd, hi);
         uint32_t word2 = ENCODE_I(OPCODE_OP_IMM, FUNCT3_ADD_SUB, rd, rd, lo);
